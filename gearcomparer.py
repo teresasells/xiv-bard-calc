@@ -99,5 +99,6 @@ fouraccbis = calc_dps(626, 539, 694, 369, 395, dreadbow) # true bis
 curgear = calc_dps(622, 550, 605, 373, 401, augmentedironworksbow)
 sartigear = calc_dps(639, 555, 597, 368, 370, dreadbow)
 goalbis = calc_dps(636, 541, 678, 354, 350, dreadbow) #upgrades required, remeld chest, acquire dread pants and bow
+print calc_weights(636, 541, 678, 354, 350, dreadbow)
 
-print curgear, sartigear
+print curgear, goalbis, fouraccbis
