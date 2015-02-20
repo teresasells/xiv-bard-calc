@@ -38,6 +38,11 @@ def calc_value(STR, ACC, CRIT, DTR, SKS, WEP):
     value = STR*weights[0] + ACC*weights[1] + CRIT*weights[2] + DTR*weights[3] + SKS*weights[4] + WEP[0]*weights[5]
     return value
 
+def calc_staticvalue(STR, ACC, CRIT, DTR, SKS, WEP):
+    weights = [1.0, 0, 0.339, 0.320, 0.161, 9.429]
+    value = STR*weights[0] + ACC*weights[1] + CRIT*weights[2] + DTR*weights[3] + SKS*weights[4] + WEP[0]*weights[5]
+    return value
+
 def calc_dps(STR, ACC, CRIT, DTR, SKS, WEP):
     SKS = SKS - 341
     base = sumdps(STR, CRIT, DTR, SKS, WEP[0], WEP[1])
@@ -91,14 +96,18 @@ def bardrotation(CRIT, SS):
 dreadbow = [52, 3.2]
 augmentedironworksbow = [51, 3.04]
 yoichibow = [50, 3.04]
+highallaganbow = [48, 3.36]
 
-nocraftedbis = calc_dps(657, 539, 614, 322, 356, dreadbow)
 bis24 = calc_dps(645, 547, 647, 349, 350, dreadbow) # no i110 accessory true bis
-apkalluncbis = calc_dps(662, 543, 583, 319, 388, dreadbow)
 fouraccbis = calc_dps(626, 539, 694, 369, 395, dreadbow) # true bis
 curgear = calc_dps(622, 550, 605, 373, 401, augmentedironworksbow)
-sartigear = calc_dps(639, 555, 597, 368, 370, dreadbow)
-goalbis = calc_dps(636, 541, 678, 354, 350, dreadbow) #upgrades required, remeld chest, acquire dread pants and bow
-print calc_weights(636, 541, 678, 354, 350, dreadbow)
+goalbis = calc_dps(636, 541, 672, 354, 350, dreadbow) #upgrades required, remeld chest, acquire dread pants and bow
 
-print curgear, goalbis, fouraccbis
+ariyalabis = calc_dps(620, 535, 710, 360, 426, dreadbow)
+curariyala = calc_dps(616, 538, 614, 376, 429, augmentedironworksbow)
+newgoalbis = calc_dps(630, 540, 690, 351, 363, dreadbow)
+newergoalerbiser = calc_dps(638, 535, 677, 334, 383, dreadbow)
+noaccuracybis = calc_dps(649, 455, 660, 349, 392, dreadbow)
+betterthan4accbis = calc_dps(620, 526, 710, 360, 432, dreadbow)
+print fouraccbis, betterthan4accbis
+

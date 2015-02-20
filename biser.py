@@ -1,6 +1,7 @@
 #! /usr/bin/python2
 
 import numpy
+import math
 
 caps = numpy.array([0, 535, 0, 0, 0, 0])
 
@@ -87,17 +88,20 @@ ironring = [21, 20, 14, 0, 0, 0] # wants to prune but thats only because it does
 
 rings = [platring1, platring2, platring3, platring4, ironring, aironring] # accounting for unique rings is gonna be fun ._.
 
-allitems = [head, body, hands, waist, legs, feet, necklace, earrings, bracelets, rings] # weapon
+allitems = [head, body, hands, waist, legs, feet, necklace, earrings, bracelets, rings, rings] # weapon
+allindex = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-def calc_effectivedex(gearset, weights):
-    return numpy.sum(numpy.array(gearset)*numpy.array(weights))
+def calc_effectivedex(gearset):
+    seedweights = [1.0, 0, 0.339, 0.320, 0.161, 0]
+    wd = [9.429]
+    return numpy.sum(numpy.array(gearset)*numpy.array(seedweights))+52*wd[0]
 
 def pruneItems(itemset):
-    seedweights = [1.0, 0, 0.3182928612595842, 0.33058529623596355, 0.15434396753120455, 0]
-    wd = [9.630683816496193]
+    wd = [9.429]
     i = j = 0
     for i in range(len(itemset)):
-        myval = calc_effectivedex(itemset[i], seedweights)
+        myval = calc_effectivedex(itemset[i])
+        print myval, i
         mycaps = caps*itemset[i]
         for j in range(len(itemset)):
             newval = calc_effectivedex(itemset[j], seedweights)
@@ -106,14 +110,67 @@ def pruneItems(itemset):
             if newval > myval and not True in comp:
                 print "prune item", i, "beat by", j, "dif", newval-myval
 
+def sumset(fullcombo, indexes):
+    base = [334, 341, 394, 228, 341, 269]
+    for i in range(0, 11):
+        base = numpy.add(base, allitems[i][allindex[i]])
+    accplus = min(math.floor(base[1]*.03), 16)
+    critplus = min(math.floor(base[2]*.05), 33)
+    vitplus = min(math.floor(base[5]*.05), 28)
+    return numpy.add(base, [0, accplus, critplus, 0, 0, vitplus])
 
+def increment(fullcombo, indexes):
+    i = 0
+    while i < len(fullcombo):
+        if indexes[i]+1 == len(fullcombo[i]):
+            indexes[i] = 0
+            i = i + 1
+        else:
+            indexes[i] = indexes[i]+1
+            return False
+    return True
+
+
+
+
+# print "head"
 # pruneItems(numpy.array(head))
+# print "body"
 # pruneItems(body)
+# print "hands"
 # pruneItems(numpy.array(hands))
+# print "waist"
 # pruneItems(numpy.array(waist))
+# print "legs"
 # pruneItems(numpy.array(legs))
+# print "feet"
 # pruneItems(numpy.array(feet))
+# print "necklace"
 # pruneItems(numpy.array(necklace))
+# print "earing"
 # pruneItems(numpy.array(earrings))
+# print "bracelet"
 # pruneItems(numpy.array(bracelets))
-pruneItems(numpy.array(rings))
+# print "ring"
+# pruneItems(numpy.array(rings))
+
+sumset(allitems, allindex)
+
+def isValid(itemset):
+    comp = itemset > caps
+    return not False in comp
+
+
+def calc_bis(allitems, allindex):
+    bestset = sumset(allitems, allindex)
+    bestsetval = calc_effectivedex(bestset)
+    while(not increment(allitems, allindex)):
+        newset = sumset(allitems, allindex)
+        if(isValid(newset)):
+            newval = calc_effectivedex(newset)
+            if(newval > bestsetval):
+                bestset = newset
+                bestsetval = newval
+                print bestsetval, bestset, allindex
+
+calc_bis(allitems, allindex)
