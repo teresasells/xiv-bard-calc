@@ -108,7 +108,7 @@ def pruneItems(itemset):
         print myval, i
         mycaps = caps*itemset[i]
         for j in range(len(itemset)):
-            newval = calc_effectivedex(itemset[j], seedweights)
+            newval = calc_effectivedex(itemset[j])
             newcaps = caps*itemset[j]
             comp = mycaps > newcaps
             if newval > myval and not True in comp:
