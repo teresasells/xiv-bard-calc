@@ -2,6 +2,7 @@
 
 import numpy
 import math
+import gearcomparer
 
 caps = numpy.array([0, 535, 0, 0, 0, 0])
 
@@ -163,11 +164,12 @@ def isValid(itemset):
 
 def calc_bis(allitems, allindex):
     bestset = sumset(allitems, allindex)
-    bestsetval = calc_effectivedex(bestset)
+    bestsetval = gearcomparer.calc_dps(bestset[0], bestset[1], bestset[2], bestset[3], bestset[4], [52, 3.2])
+    print bestsetval
     while(not increment(allitems, allindex)):
         newset = sumset(allitems, allindex)
         if(isValid(newset)):
-            newval = calc_effectivedex(newset)
+            newval = gearcomparer.calc_dps(newset[0], newset[1], newset[2], newset[3], newset[4], [52, 3.2])
             if(newval > bestsetval):
                 bestset = newset
                 bestsetval = newval

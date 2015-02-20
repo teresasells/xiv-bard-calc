@@ -93,21 +93,24 @@ def bardrotation(CRIT, SS):
     return BLFactor + rotationpps + ogcdpps
 
 
-dreadbow = [52, 3.2]
-augmentedironworksbow = [51, 3.04]
-yoichibow = [50, 3.04]
-highallaganbow = [48, 3.36]
+def main():
+    dreadbow = [52, 3.2]
+    augmentedironworksbow = [51, 3.04]
+    yoichibow = [50, 3.04]
+    highallaganbow = [48, 3.36]
 
-bis24 = calc_dps(645, 547, 647, 349, 350, dreadbow) # no i110 accessory true bis
-fouraccbis = calc_dps(626, 539, 694, 369, 395, dreadbow) # true bis
-curgear = calc_dps(622, 550, 605, 373, 401, augmentedironworksbow)
-goalbis = calc_dps(636, 541, 672, 354, 350, dreadbow) #upgrades required, remeld chest, acquire dread pants and bow
+    bis24 = calc_dps(645, 547, 647, 349, 350, dreadbow) # no i110 accessory true bis
+    fouraccbis = calc_dps(626, 539, 694, 369, 395, dreadbow) # true bis
+    curgear = calc_dps(622, 550, 605, 373, 401, augmentedironworksbow)
+    goalbis = calc_dps(636, 541, 672, 354, 350, dreadbow) #upgrades required, remeld chest, acquire dread pants and bow
 
-ariyalabis = calc_dps(620, 535, 710, 360, 426, dreadbow)
-curariyala = calc_dps(616, 538, 614, 376, 429, augmentedironworksbow)
-newgoalbis = calc_dps(630, 540, 690, 351, 363, dreadbow)
-newergoalerbiser = calc_dps(638, 535, 677, 334, 383, dreadbow)
-noaccuracybis = calc_dps(649, 455, 660, 349, 392, dreadbow)
-betterthan4accbis = calc_dps(620, 526, 710, 360, 432, dreadbow)
-print fouraccbis, betterthan4accbis
+    ariyalabis = calc_dps(620, 535, 710, 360, 426, dreadbow)
+    curariyala = calc_dps(616, 538, 614, 376, 429, augmentedironworksbow)
+    newgoalbis = calc_dps(630, 540, 690, 351, 363, dreadbow)
+    newergoalerbiser = calc_dps(638, 535, 677, 334, 383, dreadbow)
+    noaccuracybis = calc_dps(649, 455, 660, 349, 392, dreadbow)
+    betterthan4accbis = calc_dps(620, 526, 710, 360, 432, dreadbow)
+    print fouraccbis, betterthan4accbis
 
+if __name__ == "__main__":
+    main()
