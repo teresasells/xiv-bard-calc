@@ -110,7 +110,10 @@ def main():
     newergoalerbiser = calc_dps(638, 535, 677, 334, 383, dreadbow)
     noaccuracybis = calc_dps(649, 455, 660, 349, 392, dreadbow)
     betterthan4accbis = calc_dps(620, 526, 710, 360, 432, dreadbow)
-    print fouraccbis, betterthan4accbis
+    currgear = calc_dps(626, 543, 543, 325, 412, augmentedironworksbow) #my current gear RIP GG
+    realisticgear=calc_dps(632, 535, 581, 325, 412, augmentedironworksbow) #crafted earrings, twine boots and belt, demon head 
+    #print fouraccbis, betterthan4accbis
+    print currgear, realisticgear, betterthan4accbis
 
 if __name__ == "__main__":
     main()
