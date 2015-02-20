@@ -40,6 +40,7 @@ def calc_value(STR, ACC, CRIT, DTR, SKS, WEP):
 
 def calc_staticvalue(STR, ACC, CRIT, DTR, SKS, WEP):
     weights = [1.0, 0, 0.339, 0.320, 0.161, 9.429]
+    # http://www.reddit.com/r/ffxiv/comments/2q2tch/job_statweight_updates/ (22Dec2014 accepted weights)
     value = STR*weights[0] + ACC*weights[1] + CRIT*weights[2] + DTR*weights[3] + SKS*weights[4] + WEP[0]*weights[5]
     return value
 
